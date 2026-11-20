@@ -1,0 +1,60 @@
+name: Deploy Hugo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out site and theme
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Install Hugo Extended 0.126.1
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --fail --location --silent --show-error --output hugo.tar.gz \
+            https://github.com/gohugoio/hugo/releases/download/v0.126.1/hugo_extended_0.126.1_linux-amd64.tar.gz
+          echo "fb97fc338fca83f2472e0d008c39d6e2b9a062553f2ac96ada6b087538d832f7  hugo.tar.gz" | sha256sum --check
+          tar -xzf hugo.tar.gz hugo
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build and check site
+        env:
+          HUGO_ENVIRONMENT: production
+          TZ: America/New_York
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          hugo --gc --minify --baseURL "${PAGES_BASE_URL}/"
+          python3 tests/check_site.py
+          node tests/check_theme.cjs
+
+      - name: Upload built site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

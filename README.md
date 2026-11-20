@@ -31,7 +31,11 @@ python3 tests/check_site.py
 node tests/check_theme.cjs
 ```
 
-No deployment workflow is configured; pushing the source does not deploy the built Hugo site.
+## Deployment
+
+In the repository's **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**. The default branch-based Jekyll builder cannot build this Hugo site.
+
+`.github/workflows/hugo.yaml` builds with Hugo Extended 0.126.1, runs the checks above, and deploys `public/` to https://mrunalimanj.github.io/ on each push to `main`. You can also run **Deploy Hugo to GitHub Pages** manually from the Actions tab. Keep generated files out of Git; the workflow uploads them as a Pages artifact.
 
 ## Theme attribution
 
