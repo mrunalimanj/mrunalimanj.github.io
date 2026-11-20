@@ -1,0 +1,40 @@
+baseURL = "https://mrunalimanj.github.io/"
+languageCode = "en-us"
+title = "Mrunali Manjrekar"
+author = "Mrunali Manjrekar"
+theme = "hugo-apero"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "robotsTXT", "404"]
+
+[params]
+  description = "Mrunali Manjrekar — CSB PhD student at MIT."
+  orgName = "Mrunali Manjrekar"
+  favicon = "/favicon.svg"
+  sharing_image = "/social.svg"
+  theme = "forest"
+  customtextFontFamily = "Commissioner"
+  customheadingFontFamily = "Fraunces"
+  textFontFamily = "sans-serif"
+  headingFontFamily = "serif"
+  navallcaps = false
+  socialInHeader = false
+  socialInFooter = false
+
+[[menu.header]]
+  name = "About"
+  url = "#about"
+  weight = 1
+[[menu.header]]
+  name = "News"
+  url = "#news"
+  weight = 2
+[[menu.header]]
+  name = "Research"
+  url = "#research"
+  weight = 3
+[[menu.header]]
+  name = "Publications"
+  url = "#publications"
+  weight = 4
+[[menu.footer]]
+  name = "Back to top"
+  url = "#about"

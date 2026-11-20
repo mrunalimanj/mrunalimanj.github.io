@@ -1,0 +1,396 @@
+// Replace the theme's Light font mapped to 400 with the actual regular weight.
+@font-face {
+  font-family: 'Commissioner';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('#{$font-path}/Commissioner-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Commissioner';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('#{$font-path}/Commissioner-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Commissioner';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('#{$font-path}/Commissioner-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Commissioner';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('#{$font-path}/Commissioner-BoldItalic.woff2') format('woff2');
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  font-size: 1.3125rem;
+}
+
+.grid-container {
+  max-width: 1240px;
+  padding: 0 3rem;
+}
+
+.site-header {
+  padding: 2rem 0 1.25rem;
+  margin: 0;
+  opacity: 1;
+}
+
+.site-brand span {
+  font-size: 1.0625rem;
+  font-weight: 400;
+}
+
+.site-links a {
+  font-size: 1rem;
+}
+
+.site-header.headroom--unpinned {
+  transform: none;
+}
+
+.site-header {
+  border-bottom-color: #d9dfd5;
+}
+
+.academic-page {
+  padding: 0;
+}
+
+.intro {
+  padding: 5.25rem 0 4.75rem;
+}
+
+.eyebrow {
+  margin: 0 0 1.5rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+  margin: 0 0 1.25rem;
+}
+
+.affiliation {
+  font-size: 1.375rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.intro-description {
+  --portrait-size: 14rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--portrait-size);
+  align-items: start;
+  gap: 3rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.bio {
+  max-width: 46rem;
+  line-height: 1.75;
+}
+
+.bio> :first-child {
+  margin-top: 0;
+}
+
+.bio> :last-child {
+  margin-bottom: 0;
+}
+
+.topic {
+  font-weight: 600;
+}
+
+.topic-mass-spec {
+  color: #7c3fbc;
+}
+
+.topic-catalysis {
+  color: #b84435;
+}
+
+.profile-photo {
+  display: block;
+  width: var(--portrait-size);
+  height: var(--portrait-size);
+  border-radius: 50%;
+  object-fit: cover;
+  transform: translateY(calc(-50% - 1.625rem));
+}
+
+.placeholder {
+  color: #526459;
+}
+
+.academic-section {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  column-gap: 2rem;
+  padding: 2.75rem 0;
+  border-top: 1px solid #d9dfd5;
+  scroll-margin-top: 6rem;
+}
+
+.academic-section h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.section-content {
+  line-height: 1.75;
+  padding-top: 0.125rem;
+}
+
+.section-content p {
+  margin: 0 0 1rem;
+}
+
+.section-content p:last-child {
+  margin-bottom: 0;
+}
+
+#publications .section-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+#publications .section-content li+li {
+  margin-top: 1.75rem;
+}
+
+#news .section-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#news .section-content li+li {
+  margin-top: 1rem;
+}
+
+.site-footer {
+  padding: 2rem 0;
+  border-top-color: #d9dfd5;
+}
+
+.site-copyright {
+  width: 75%;
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+
+.site-footer .site-links {
+  width: 25%;
+}
+
+a {
+  text-underline-offset: 0.25em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #2f4c3e;
+  outline-offset: 5px;
+}
+
+.site-nav {
+  position: relative;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 3rem;
+  height: 3rem;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  padding: 0.375rem;
+  margin-left: 0.75rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: rgba(98, 133, 113, 0.12);
+}
+
+.theme-toggle svg { display: block; width: 2rem; height: 2.25rem; }
+.theme-toggle .lamp-bulb { fill: #f3d693; }
+.theme-toggle[aria-pressed="true"] .lamp-bulb { fill: none; }
+.theme-toggle[aria-pressed="true"] .lamp-rays { opacity: 0; }
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  body,
+  .site-header {
+    background-color: #17211d;
+    color: #e3eae5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .site-brand,
+  .site-links a,
+  .site-footer,
+  .site-footer .site-copyright a,
+  .page-main a:not(.link) {
+    color: #a5cbb2;
+  }
+
+  .placeholder {
+    color: #b0c0b5;
+  }
+
+  .topic-mass-spec {
+    color: #c5a3ff;
+  }
+
+  .topic-catalysis {
+    color: #ffad9f;
+  }
+
+  .site-header,
+  .site-footer,
+  .academic-section {
+    border-color: #3c5146;
+  }
+
+  .site-links a:after {
+    background-color: #a5cbb2;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline-color: #a5cbb2;
+  }
+}
+
+@media (max-width: 60em) {
+  .theme-toggle {
+    position: absolute;
+    right: 0;
+    top: -0.625rem;
+    margin-left: 0;
+  }
+
+  .site-brand {
+    text-align: left;
+  }
+
+  .site-links {
+    text-align: left;
+  }
+
+  .site-header .site-links a {
+    padding-left: 0;
+    padding-right: 1.25rem;
+  }
+
+  .site-header .site-links a:last-child {
+    padding-right: 0;
+  }
+
+  .site-copyright,
+  .site-footer .site-links {
+    width: 100%;
+    text-align: left;
+  }
+
+  .academic-section {
+    grid-template-columns: 12rem 1fr;
+    scroll-margin-top: 8rem;
+  }
+}
+
+@media (max-width: 40em) {
+  .grid-container {
+    padding: 0 1.5rem;
+  }
+
+  .site-header {
+    padding-top: 1.5rem;
+  }
+
+  .intro {
+    padding: 3.5rem 0;
+  }
+
+  .intro h1 {
+    max-width: 9ch;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .affiliation {
+    font-size: 1.125rem;
+  }
+
+  .intro-description {
+    --portrait-size: 9rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .profile-photo {
+    transform: none;
+  }
+
+  .academic-section {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    padding: 2rem 0;
+  }
+
+  .academic-section h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .headroom,
+  .site-links a,
+  .site-links a:after,
+  .site-links a:before {
+    transition: none;
+  }
+}

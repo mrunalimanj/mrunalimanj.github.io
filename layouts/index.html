@@ -1,0 +1,40 @@
+{{ define "header" }}
+{{ $themeScript := resources.Get "js/theme.js" | minify | fingerprint }}
+<script src="{{ $themeScript.RelPermalink }}" integrity="{{ $themeScript.Data.Integrity }}"></script>
+{{ partial "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<main id="main" class="page-main academic-page">
+  <section id="about" class="intro" aria-labelledby="intro-title">
+    <!-- <p class="eyebrow">Massachusetts Institute of Technology</p> -->
+    <h1 id="intro-title">{{ .Title }}</h1>
+    <p class="affiliation">{{ .Params.subtitle }}</p>
+    <div class="intro-description">
+      <div class="bio placeholder">{{ .Content }}</div>
+      {{ $portrait := (resources.Get "images/portrait.png").Resize "384x webp q85" }}
+      <img class="profile-photo" src="{{ $portrait.RelPermalink }}" width="192" height="192"
+        alt="Portrait of Mrunali Manjrekar" decoding="async">
+    </div>
+  </section>
+
+  <section id="news" class="academic-section" aria-labelledby="news-title">
+    <h2 id="news-title">News</h2>
+    <div class="section-content placeholder">{{ .Params.news | markdownify }}</div>
+  </section>
+
+  <section id="research" class="academic-section" aria-labelledby="research-title">
+    <h2 id="research-title">Research</h2>
+    <div class="section-content placeholder">{{ .Params.research | markdownify }}</div>
+  </section>
+
+  <section id="publications" class="academic-section" aria-labelledby="publications-title">
+    <div>
+      <h2 id="publications-title">Selected publications</h2>
+      <p class="f6 lh-copy mt3 mb0">[Complete list on <a href="{{ .Params.scholar }}">Scholar</a>]</p>
+    </div>
+    <div class="section-content placeholder">{{ .Params.publications | markdownify }}</div>
+  </section>
+
+</main>
+{{ end }}
